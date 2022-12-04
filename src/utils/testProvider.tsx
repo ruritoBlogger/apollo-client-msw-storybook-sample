@@ -3,10 +3,10 @@ import {
   ApolloProvider,
   HttpLink,
   InMemoryCache,
-} from "@apollo/client";
-import fetch from "cross-fetch";
+} from '@apollo/client';
+import fetch from 'cross-fetch';
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   link: new HttpLink({
     uri: "http://localhost:3000/api/graphql",
     fetch,
@@ -14,10 +14,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-interface TestRendererInput {
+interface TestProviderInput {
   children: JSX.Element;
 }
 
-export const TestRenderer = ({ children }: TestRendererInput): JSX.Element => {
+export const TestProvider = ({ children }: TestProviderInput): JSX.Element => {
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };

@@ -3,13 +3,13 @@ import * as stories from "./TestButton.stories";
 import { render, RenderResult } from "@testing-library/react";
 import { server } from "../../mocks";
 import { createTodoQueryHandler } from "../../mocks/handler/todoQueryHandler";
-import { TestRenderer } from "../../utils/TestRenderer";
+import { TestProvider } from "../../utils/testProvider";
 import { ComponentType, ReactElement } from "react";
 
 // TODO: 別ファイルに切り出す
 function customRender(component: ReactElement): RenderResult {
   function Wrapper({ children }: { children: ReactElement }): JSX.Element {
-    return <TestRenderer>{children}</TestRenderer>;
+    return <TestProvider>{children}</TestProvider>;
   }
 
   return {
