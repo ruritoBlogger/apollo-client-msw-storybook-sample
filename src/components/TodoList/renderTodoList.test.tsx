@@ -22,3 +22,13 @@ test("データの取得に失敗した際にエラーを表示すること", as
     await findByText("error!!!" )
   ).toBeInTheDocument();
 });
+
+test("データの読み込み中は読み込み中であることを表示すること", async () => {
+  server.use(todosQueryHandler({loading: true}))
+  const { Loading } = composeStories(stories);
+  const { findByText } = customRender(<Loading />);
+
+  expect(
+    await findByText("loading..." )
+  ).toBeInTheDocument();
+});
