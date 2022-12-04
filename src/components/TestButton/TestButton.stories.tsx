@@ -6,13 +6,6 @@ import { TestProvider } from "../../utils/testProvider";
 
 export default {
   component: TestButton,
-  decorators: [
-    (Story) => (
-      <TestProvider>
-        <Story />
-      </TestProvider>
-    ),
-  ],
 } as ComponentMeta<typeof TestButton>;
 
 export const Default: ComponentStoryObj<typeof TestButton> = {
