@@ -30,7 +30,7 @@ export const ClickButton: ComponentStoryObj<typeof TestButton> = {
   },
 };
 
-export const Error: ComponentStoryObj<typeof TestButton> = {
+export const OnError: ComponentStoryObj<typeof TestButton> = {
   name: "データの取得に失敗したとき",
   decorators: [disableCacheDecorator],
   parameters: {
