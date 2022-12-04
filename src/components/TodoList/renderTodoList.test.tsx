@@ -2,6 +2,7 @@ import * as stories from "./TodoList.stories"
 import { server } from "../../mocks";
 import { customRender } from "../../utils/customRenderer";
 import {composeStories} from "@storybook/testing-react";
+import {todosQueryHandler} from "./todosQueryHandler";
 
 test("レンダリングした時, 正常に表示されること", async () => {
   const { Default } = composeStories(stories);
@@ -13,10 +14,10 @@ test("レンダリングした時, 正常に表示されること", async () => 
 });
 
 test("データの取得に失敗した際にエラーを表示すること", async () => {
+  server.use(todosQueryHandler({errors: "error!!!"}))
   const { OnError } = composeStories(stories);
   const { findByText } = customRender(<OnError />);
 
-  "vitest": "^0.25.1"
   expect(
     await findByText("error!!!" )
   ).toBeInTheDocument();

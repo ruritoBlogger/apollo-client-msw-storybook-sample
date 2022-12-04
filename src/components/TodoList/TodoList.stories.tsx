@@ -17,7 +17,7 @@ export const Default: ComponentStoryObj<typeof TodoList> = {
   },
 };
 
-export const onError: ComponentStoryObj<typeof TodoList> = {
+export const OnError: ComponentStoryObj<typeof TodoList> = {
   args: {},
   name: "データ取得に失敗時",
   parameters: {
