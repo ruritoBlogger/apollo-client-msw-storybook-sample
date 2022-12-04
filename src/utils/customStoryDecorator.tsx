@@ -12,3 +12,15 @@ export const customStoryDecorator = (
     </TestProvider>
   );
 };
+
+// TODO: 別ファイルとかに移行したい
+export const disableCacheDecorator = (
+  Story: StoryFn<ReactFramework>,
+  context: StoryContext<ReactFramework>,
+): JSX.Element => {
+  return (
+    <TestProvider disableCache={true}>
+      <Story {...context} />
+    </TestProvider>
+  );
+};

@@ -2,7 +2,7 @@ import { TestButton } from "./TestButton";
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { createTodoQueryHandler } from "../../mocks/handler/todoQueryHandler";
-import { TestProvider } from "../../utils/testProvider";
+import { disableCacheDecorator } from "../../utils/customStoryDecorator";
 
 export default {
   component: TestButton,
@@ -32,6 +32,7 @@ export const ClickButton: ComponentStoryObj<typeof TestButton> = {
 
 export const Error: ComponentStoryObj<typeof TestButton> = {
   name: "データの取得に失敗したとき",
+  decorators: [disableCacheDecorator],
   parameters: {
     msw: {
       handlers: [createTodoQueryHandler({ errors: "エラーだよ！！" })],
@@ -41,6 +42,7 @@ export const Error: ComponentStoryObj<typeof TestButton> = {
 
 export const Loading: ComponentStoryObj<typeof TestButton> = {
   name: "データの取得中の時",
+  decorators: [disableCacheDecorator],
   parameters: {
     msw: {
       handlers: [createTodoQueryHandler({ loading: true })],
