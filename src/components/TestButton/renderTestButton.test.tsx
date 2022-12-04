@@ -1,23 +1,8 @@
 import { composeStories } from "@storybook/testing-react";
 import * as stories from "./TestButton.stories";
-import { render, RenderResult } from "@testing-library/react";
 import { server } from "../../mocks";
 import { todoQueryHandler } from "./todoQueryHandler";
-import { TestProvider } from "../../utils/testProvider";
-import { ComponentType, ReactElement } from "react";
-
-// TODO: 別ファイルに切り出す
-function customRender(component: ReactElement): RenderResult {
-  function Wrapper({ children }: { children: ReactElement }): JSX.Element {
-    return <TestProvider>{children}</TestProvider>;
-  }
-
-  return {
-    ...render(component, {
-      wrapper: Wrapper as ComponentType,
-    }),
-  };
-}
+import { customRender } from "../../utils/customRenderer";
 
 test("TestButtonをレンダリングした時, 正常に表示されること", async () => {
   const { Default } = composeStories(stories);
