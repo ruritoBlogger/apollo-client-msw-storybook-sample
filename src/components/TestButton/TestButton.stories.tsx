@@ -1,7 +1,7 @@
 import { TestButton } from "./TestButton";
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
-import { createTodoQueryHandler } from "../../mocks/handler/todoQueryHandler";
+import { todoQueryHandler } from "./todoQueryHandler";
 import { disableCacheDecorator } from "../../utils/customStoryDecorator";
 
 export default {
@@ -13,7 +13,7 @@ export const Default: ComponentStoryObj<typeof TestButton> = {
   name: "通常時",
   parameters: {
     msw: {
-      handlers: [createTodoQueryHandler({})],
+      handlers: [todoQueryHandler({})],
     },
   },
 };
@@ -35,7 +35,7 @@ export const OnError: ComponentStoryObj<typeof TestButton> = {
   decorators: [disableCacheDecorator],
   parameters: {
     msw: {
-      handlers: [createTodoQueryHandler({ errors: "エラーだよ！！" })],
+      handlers: [todoQueryHandler({ errors: "エラーだよ！！" })],
     },
   },
 };
@@ -45,7 +45,7 @@ export const Loading: ComponentStoryObj<typeof TestButton> = {
   decorators: [disableCacheDecorator],
   parameters: {
     msw: {
-      handlers: [createTodoQueryHandler({ loading: true })],
+      handlers: [todoQueryHandler({ loading: true })],
     },
   },
 };

@@ -1,15 +1,15 @@
 import { graphql } from "msw";
 import { GraphQLError } from "graphql/error";
 
-interface CreateTodoQueryHandlerInput {
+interface TodoQueryHandlerInput {
   loading?: boolean;
   errors?: string;
 }
 
-export const createTodoQueryHandler = ({
+export const todoQueryHandler = ({
   loading,
   errors,
-}: CreateTodoQueryHandlerInput) => {
+}: TodoQueryHandlerInput) => {
   return graphql.query("todo", (req, res, ctx) => {
     const { id } = req.variables;
     // TODO: errorの型情報が確定したら、それに合わせて返却する値も調整する

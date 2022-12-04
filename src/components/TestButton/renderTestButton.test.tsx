@@ -2,7 +2,7 @@ import { composeStories } from "@storybook/testing-react";
 import * as stories from "./TestButton.stories";
 import { render, RenderResult } from "@testing-library/react";
 import { server } from "../../mocks";
-import { createTodoQueryHandler } from "../../mocks/handler/todoQueryHandler";
+import { todoQueryHandler } from "./todoQueryHandler";
 import { TestProvider } from "../../utils/testProvider";
 import { ComponentType, ReactElement } from "react";
 
@@ -29,7 +29,7 @@ test("TestButtonをレンダリングした時, 正常に表示されること",
 });
 
 test("TestButtonをクリックした時, ボタンのテキストが変化すること", async () => {
-  server.use(createTodoQueryHandler({}));
+  server.use(todoQueryHandler({}));
   const { ClickButton } = composeStories(stories);
   const { container, findByRole } = customRender(<ClickButton />);
   await ClickButton.play({ canvasElement: container });
