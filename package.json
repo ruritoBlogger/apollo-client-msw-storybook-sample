@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format:write": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"./src/**/*.{ts,tsx}\"",
-    "test:watch": "NODE_ENV=test vitest",
+    "test": "NODE_ENV=test vitest",
     "test:ci": "NODE_ENV=test vitest run",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
