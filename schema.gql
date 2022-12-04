@@ -1,0 +1,10 @@
+type Query {
+  todo(id: Int!): Todo
+}
+
+"""todo"""
+type Todo {
+  id: ID!
+  name: String!
+  title: String!
+}
