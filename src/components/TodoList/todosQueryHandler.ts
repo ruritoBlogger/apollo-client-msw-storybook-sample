@@ -4,12 +4,12 @@ import {TodosQuery, TodosQueryVariables} from "../../generated/graphql";
 
 interface TodosQueryHandlerInput {
   loading?: boolean;
-  errors?: string;
+  isError?: boolean;
 }
 
 export const todosQueryHandler = ({
   loading,
-  errors,
+  isError,
 }: TodosQueryHandlerInput) => {
   return graphql.query<TodosQuery, TodosQueryVariables>("todos", (req, res, ctx) => {
     if (loading) {
@@ -19,7 +19,7 @@ export const todosQueryHandler = ({
       );
     }
 
-    if (errors) {
+    if (isError) {
       return res(ctx.errors([new GraphQLError("error!!!")]));
     }
 

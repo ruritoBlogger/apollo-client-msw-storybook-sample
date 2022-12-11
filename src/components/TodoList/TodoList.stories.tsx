@@ -22,7 +22,7 @@ export const OnError: ComponentStoryObj<typeof TodoList> = {
   name: "データ取得に失敗時",
   parameters: {
     msw: {
-      handlers: [todosQueryHandler({errors: "エラー！！！"})]
+      handlers: [todosQueryHandler({isError: true})]
     },
   },
   decorators: [disableCacheDecorator]
