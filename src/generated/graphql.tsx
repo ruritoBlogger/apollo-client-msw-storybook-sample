@@ -15,6 +15,13 @@ export type Scalars = {
   Float: number;
 };
 
+/** memo */
+export type Memo = {
+  __typename?: 'Memo';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   todo?: Maybe<Todo>;
@@ -30,6 +37,7 @@ export type QueryTodoArgs = {
 export type Todo = {
   __typename?: 'Todo';
   id: Scalars['ID'];
+  memos: Array<Memo>;
   name: Scalars['String'];
   title: Scalars['String'];
 };

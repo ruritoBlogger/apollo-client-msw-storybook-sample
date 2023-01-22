@@ -8,4 +8,11 @@ type Todo {
   id: ID!
   name: String!
   title: String!
+  memos: [Memo!]!
+}
+
+"""memo"""
+type Memo {
+  id: ID!
+  title: String!
 }
